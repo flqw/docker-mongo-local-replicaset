@@ -25,11 +25,11 @@ fi
 
 echo "STARTING CLUSTER"
 
-mongod --port 27003 --smallfiles --dbpath /data/db3 --replSet $REPLICA_SET_NAME --bind_ip=::,0.0.0.0 &
+mongod --port 27003 --dbpath /data/db3 --replSet $REPLICA_SET_NAME --bind_ip_all &
 DB3_PID=$!
-mongod --port 27002 --smallfiles --dbpath /data/db2 --replSet $REPLICA_SET_NAME --bind_ip=::,0.0.0.0 &
+mongod --port 27002 --dbpath /data/db2 --replSet $REPLICA_SET_NAME --bind_ip_all &
 DB2_PID=$!
-mongod --port 27001 --smallfiles --dbpath /data/db1 --replSet $REPLICA_SET_NAME --bind_ip=::,0.0.0.0 &
+mongod --port 27001 --dbpath /data/db1 --replSet $REPLICA_SET_NAME --bind_ip_all &
 DB1_PID=$!
 
 waitForMongo 27001
